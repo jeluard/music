@@ -1,0 +1,54 @@
+{
+  "name": "@jeluard/music",
+  "version": "1.0.0",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "lint": "npx eslint ./src/ --ext .js,.jsx,.jsx,.ts,.tsx",
+    "dev": "NODE_ENV=dev parcel public/index.html --port 80",
+    "watch": "parcel watch public/index.html",
+    "build": "parcel build public/index.html && mkdir -p dist/assets/ && cp -R public/assets/* dist/assets/ && cp public/robots.txt dist/",
+    "start": "yarn build && cd dist/ && npx http-server",
+    "test": "ava",
+    "clean": "rm -rf node_modules/ dist/ .parcel-cache/ yarn.lock"
+  },
+  "dependencies": {
+    "@material-ui/core": "4.11.3",
+    "@material-ui/icons": "4.11.2",
+    "@material-ui/lab": "4.0.0-alpha.57",
+    "@types/vexflow": "^3.0.0",
+    "@types/webmidi": "^2.0.4",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "react-spring": "8.0.27",
+    "tone": "^14.7.77",
+    "vexflow": "^3.0.9"
+  },
+  "devDependencies": {
+    "@parcel/optimizer-cssnano": "2.0.0-nightly.621",
+    "@parcel/optimizer-htmlnano": "2.0.0-nightly.621",
+    "@parcel/packager-css": "2.0.0-nightly.621",
+    "@parcel/packager-html": "2.0.0-nightly.621",
+    "@parcel/transformer-css": "2.0.0-nightly.621",
+    "@parcel/transformer-html": "2.0.0-nightly.621",
+    "@parcel/transformer-inline-string": "2.0.0-nightly.621",
+    "@parcel/transformer-postcss": "2.0.0-nightly.621",
+    "@parcel/transformer-posthtml": "2.0.0-nightly.621",
+    "@types/react": "17.0.3",
+    "@types/react-dom": "17.0.2",
+    "@typescript-eslint/eslint-plugin": "4.17.0",
+    "@typescript-eslint/parser": "4.17.0",
+    "ava": "3.15.0",
+    "eslint": "7.21.0",
+    "eslint-plugin-react": "7.22.0",
+    "parcel": "nightly",
+    "typescript": "4.2.3"
+  },
+  "browserslist": [
+    "last 5 and_chr versions",
+    "last 5 chrome versions",
+    "last 5 opera versions",
+    "last 5 ios_saf versions",
+    "last 5 safari versions"
+  ]
+}

@@ -1,0 +1,36 @@
+name: github pages
+
+on:
+  push:
+    branches:
+    - source
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup Node
+      uses: actions/setup-node@v2
+
+    - name: Cache dependencies
+      uses: actions/cache@v1
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+
+    - name: Build
+      run: |
+        yarn
+        yarn run build
+        cp ./dist/index.html ./dist/404.html
+
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3
+      env:
+        ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+        PUBLISH_BRANCH: master
+        PUBLISH_DIR: ./dist
