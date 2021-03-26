@@ -7,7 +7,7 @@
     "lint": "npx eslint ./src/ --ext .js,.jsx,.jsx,.ts,.tsx",
     "dev": "NODE_ENV=dev parcel public/index.html --port 80",
     "watch": "parcel watch public/index.html",
-    "build": "parcel build public/index.html",
+    "build": "parcel build public/index.html --public-url ./",
     "start": "yarn build && cd dist/ && npx http-server",
     "test": "ava",
     "clean": "rm -rf node_modules/ dist/ .parcel-cache/ yarn.lock"
